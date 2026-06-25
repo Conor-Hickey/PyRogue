@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from src.components.base_component import BaseComponent
-from src.render_order import RenderOrder
+from src.game_map.render_order import RenderOrder
 from src.input_handlers import GameOverEventHandler
 
 if TYPE_CHECKING:

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import copy
 from typing import Optional, Tuple, Type, TypeVar, TYPE_CHECKING
-from src.render_order import RenderOrder
+from src.game_map.render_order import RenderOrder
 
 if TYPE_CHECKING:
     from components.ai import BaseAI
