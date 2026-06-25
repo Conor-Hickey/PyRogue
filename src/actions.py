@@ -37,6 +37,7 @@ class EscapeAction(Action):
 
 class WaitAction(Action):
     def perform(self) -> None:
+        # Does nothing as a result of this action.
         pass
 
 
