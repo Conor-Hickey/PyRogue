@@ -4,6 +4,7 @@ import copy
 from src.engine import Engine
 from src.game_map.procgen import generate_dungeon
 from src.entity_handlers import entity_factories
+import src.user_interface.colour as colour
 
 
 def main():
@@ -11,7 +12,7 @@ def main():
     screen_height = 50
 
     map_width = 80
-    map_height = 45
+    map_height = 43
 
     room_max_size = 10
     room_min_size = 6
@@ -27,6 +28,10 @@ def main():
 
     engine = Engine(player=player)
 
+    engine.message_log.add_message(
+        "Hello and welcome, crawlers, to yet another dungeon crawl!",
+        colour.welcome_text,
+    )
     engine.game_map = generate_dungeon(
         max_rooms=max_rooms,
         room_min_size=room_min_size,
@@ -47,8 +52,11 @@ def main():
 
         root_console = tcod.Console(screen_width, screen_height, order="F")
         while True:
-            engine.render(console=root_console, context=context)
-            engine.event_handler.handle_events()
+            root_console.clear()
+            engine.event_handler.on_render(console=root_console)
+            context.present(root_console)
+
+            engine.event_handler.handle_events(context)
 
 
 if __name__ == "__main__":
